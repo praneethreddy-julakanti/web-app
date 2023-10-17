@@ -1,0 +1,164 @@
+table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mat-toolbar {
+  background-color: white;
+  margin: 0 auto;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .mat-table {
+    width: 100%;
+  }
+}
+
+mat-list {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+mat-card {
+  max-width: 96%;
+  margin: 0 auto;
+}
+.mat-icon-button {
+  width: auto;
+}
+
+ul {
+  padding-inline-start: 10px;
+}
+
+ul.breadcrumb {
+  list-style: none;
+}
+
+ul.breadcrumb li {
+  display: inline;
+}
+
+ul.breadcrumb li + li:before {
+  color: black;
+  content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+.add-user li {
+  padding-inline-end: 20px;
+}
+
+.status-button {
+  width: 80px;
+  height: 40px;
+}
+
+.mat-table,
+.mat-column {
+  border: 1px solid currentColor;
+}
+
+.mat-header-cell {
+  background-color: rgb(214, 212, 212);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.table-container th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white; /* Set the background color you prefer */
+}
+
+.table-wrapper {
+  overflow: auto;
+  padding: 4px;
+}
+table {
+  width: 100%;
+}
+.mat-mdc-header-row {
+  background-color: rgb(213, 231, 231);
+  position: sticky;
+  top: 0;
+}
+th {
+  position: sticky;
+  top: 0;
+}
+.mat-sort-header-arrow {
+  color: #1a1717;
+}
+.mat-mdc-row {
+  height: 48px !important;
+}
+.mat-mdc-column {
+  border-right: 1px solid currentColor;
+}
+.mat-column-position {
+  width: 32px;
+  border-right: 1px solid lightgray;
+  padding-right: 24px;
+  text-align: center;
+}
+.mat-column-name {
+  border-right: 1px solid lightgray;
+  padding-right: 24px;
+  text-align: center;
+}
+.mat-column-weight {
+  border-right: 1px solid lightgray;
+  padding-right: 24px;
+  text-align: center;
+}
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 48px;
+
+  background-color: white;
+  position: sticky;
+  z-index: 99999;
+  top: 0;
+  overflow: hidden;
+  margin: 4px;
+}
+.header-text {
+  padding-left: 8px;
+  font-weight: 600;
+}
+.add-user {
+  cursor: pointer;
+}
+.emp-actions {
+  display: flex;
+  align-items: center;
+
+  .search {
+    height: 32px;
+    padding: 0px 8px;
+  }
+}
