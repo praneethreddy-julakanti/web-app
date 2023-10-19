@@ -1,6 +1,7 @@
+<div class="emp-list">
 <ul class="breadcrumb">
-  <li><a href="#" routerLink="/dashboard">Home</a></li>
-  <li><a href="#" routerLink="/users">Users</a></li>
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Users</a></li>
 </ul>
 
 <div class="header-container mat-elevation-z1" >
@@ -19,41 +20,42 @@
 </div>
 </div>
 <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource" class="table-style mat-elevation-z8" matSort  (matSortChange)="onSort($event)">
+  <section class="example-container  table-style mat-elevation-z8" tabindex="0">
+    <table mat-table [dataSource]="dataSource"  matSort  (matSortChange)="onSort($event)">
 
       <ng-container matColumnDef="fullname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"> Name </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
         <td mat-cell *matCellDef="let user"> {{user.fullname}} </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Email </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email"> Email </th>
         <td mat-cell *matCellDef="let user"> {{user.email}} </td>
       </ng-container>
 
       <ng-container matColumnDef="personalcontactnumber">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight"> Mobile No. </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by mobile no."> Mobile No. </th>
         <td mat-cell *matCellDef="let user"> {{user.personalcontactnumber}} </td>
       </ng-container>
 
       <ng-container matColumnDef="designation">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Designation </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by designation"> Designation </th>
         <td mat-cell *matCellDef="let user"> {{user.designation}} </td>
       </ng-container>
 
       <ng-container matColumnDef="department">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Department </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by department"> Department </th>
         <td mat-cell *matCellDef="let user"> {{user.department}} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Status </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by status"> Status </th>
         <td mat-cell *matCellDef="let user" [ngStyle]="{ color: user.status === 'Active' ? 'green' : 'red' }"> {{user.status}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Action </th>
-        <td mat-cell *matCellDef="let user">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by action"> Action </th>
+        <td mat-cell *matCellDef="let user" >
           <button mat-icon-button>
             <mat-icon>edit</mat-icon>
           </button>
@@ -64,12 +66,11 @@
         </td>
       </ng-container>
 
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <hr>
-    <!-- paginator -->
+  </section>
+    
     <mat-paginator #paginator
             (page)="handlePageEvent($event)"
             [length]="length"
@@ -81,5 +82,5 @@
             [pageIndex]="pageIndex"
             aria-label="Select page">
     </mat-paginator>
-
+</div>
 </div>

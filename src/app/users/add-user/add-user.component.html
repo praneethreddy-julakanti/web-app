@@ -1,19 +1,11 @@
 <ul class="breadcrumb">
-  <li><a href="#" routerLink="/dashboard">Home</a></li>
-  <li><a href="#" routerLink="/users">Add User</a></li>
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Add User</a></li>
 </ul>
-
-<!-- <div class="header-container mat-elevation-z1">
-  <span class="header-text">
-    Add User
-  </span>
-</div> -->
 
 <mat-card class="center-card">
   <div class="header-container mat-elevation-z1">
-    <span class="header-text">
-      Add User
-    </span>
+    <span class="header-text"> Add User </span>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -21,116 +13,186 @@
       <div class="form-column-left">
         <mat-form-field appearance="fill">
           <mat-label>Full Name</mat-label>
-          <input matInput formControlName="fullname">
-          <mat-error *ngIf="form.get('fullname')!.hasError('required')">Full Name is required</mat-error>
+          <input matInput formControlName="fullname" />
+          <mat-error *ngIf="form.get('fullname')!.hasError('required')"
+            >Full Name is required</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Psuedo Name</mat-label>
-          <input matInput formControlName="pseudoname">
-          <mat-error *ngIf="form.get('pseudoname')!.hasError('required')">Psuedo Name is required</mat-error>
+          <input matInput formControlName="pseudoname" />
+          <mat-error *ngIf="form.get('pseudoname')!.hasError('required')"
+            >Psuedo Name is required</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email">
-          <mat-error *ngIf="form.get('email')!.hasError('required')">Email is required</mat-error>
-          <mat-error *ngIf="form.get('email')!.hasError('email')">Invalid email address</mat-error>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="form.get('email')!.hasError('required')"
+            >Email is required</mat-error
+          >
+          <mat-error *ngIf="form.get('email')!.hasError('email')"
+            >Invalid email address</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Personal Contact
-            Number </mat-label>
-          <input matInput formControlName="personalcontactnumber">
-          <mat-error *ngIf="form.get('personalcontactnumber')!.hasError('required')">Personal Contact
-            Number is required</mat-error>
-        </mat-form-field>
-
-
-        <mat-form-field appearance="fill">
-          <mat-label>Company Contact
-            Number</mat-label>
-          <input matInput formControlName="companycontactnumber">
+          <mat-label>Personal Contact Number </mat-label>
+          <input matInput formControlName="personalcontactnumber" />
+          <mat-error
+            *ngIf="form.get('personalcontactnumber')!.hasError('required')"
+            >Personal Contact Number is required</mat-error
+          >
         </mat-form-field>
       </div>
 
-      <div class="form-column-right">
+      <div class="form-column-middle">
         <mat-form-field appearance="fill">
-          <mat-label>Designation</mat-label>
-          <input matInput formControlName="designation">
+          <mat-label>Company Contact Number</mat-label>
+          <input matInput formControlName="companycontactnumber" />
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+          <mat-label>Designation</mat-label>
+          <input matInput formControlName="designation" />
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Select Department</mat-label>
-          <input matInput formControlName="department" [matAutocomplete]="departmentAuto">
+          <input
+            matInput
+            formControlName="department"
+            [matAutocomplete]="departmentAuto"
+          />
           <mat-autocomplete #departmentAuto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredDepartmentOptions | async" [value]="option">
+            <mat-option
+              *ngFor="let option of filteredDepartmentOptions | async"
+              [value]="option"
+            >
               {{ option }}
             </mat-option>
           </mat-autocomplete>
-          <mat-error *ngIf="form.get('department')!.hasError('required')">Choose Deparment</mat-error>
+          <mat-error *ngIf="form.get('department')!.hasError('required')"
+            >Choose Deparment</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Role</mat-label>
-          <input matInput formControlName="role" [matAutocomplete]="roleAuto">
+          <input matInput formControlName="role" [matAutocomplete]="roleAuto" />
           <mat-autocomplete #roleAuto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredRoleOptions | async" [value]="option">
+            <mat-option
+              *ngFor="let option of filteredRoleOptions | async"
+              [value]="option"
+            >
               {{ option }}
             </mat-option>
           </mat-autocomplete>
-          <mat-error *ngIf="form.get('role')!.hasError('required')">Role is Required</mat-error>
+          <mat-error *ngIf="form.get('role')!.hasError('required')"
+            >Role is Required</mat-error
+          >
         </mat-form-field>
+      </div>
 
-        <mat-form-field *ngIf="form.get('role')!.value === 'Employee'" appearance="fill">
+      <div class="form-column-right">
+        <mat-form-field
+          *ngIf="form.get('role')!.value === 'Employee'"
+          appearance="fill"
+        >
           <mat-label>Select Manager</mat-label>
-          <input matInput formControlName="manager" [matAutocomplete]="roleAuto">
+          <input
+            matInput
+            formControlName="manager"
+            [matAutocomplete]="roleAuto"
+          />
           <mat-autocomplete #roleAuto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredManagerOptions | async" [value]="option">
+            <mat-option
+              *ngFor="let option of filteredManagerOptions | async"
+              [value]="option"
+            >
               {{ option }}
             </mat-option>
           </mat-autocomplete>
-          <mat-error *ngIf="form.get('manager')!.hasError('required')">Manager is Required</mat-error>
+          <mat-error *ngIf="form.get('manager')!.hasError('required')"
+            >Manager is Required</mat-error
+          >
         </mat-form-field>
 
-        <mat-form-field *ngIf="form.get('role')!.value === 'Employee'" appearance="fill">
+        <mat-form-field
+          *ngIf="form.get('role')!.value === 'Employee'"
+          appearance="fill"
+        >
           <mat-label>Select Team Lead</mat-label>
-          <input matInput formControlName="teamlead" [matAutocomplete]="roleAuto">
+          <input
+            matInput
+            formControlName="teamlead"
+            [matAutocomplete]="roleAuto"
+          />
           <mat-autocomplete #roleAuto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredTeamLeadOptions | async" [value]="option">
+            <mat-option
+              *ngFor="let option of filteredTeamLeadOptions | async"
+              [value]="option"
+            >
               {{ option }}
             </mat-option>
           </mat-autocomplete>
-          <mat-error *ngIf="form.get('teamlead')!.hasError('required')">Manager is Required</mat-error>
+          <mat-error *ngIf="form.get('teamlead')!.hasError('required')"
+            >Manager is Required</mat-error
+          >
         </mat-form-field>
 
-        <mat-form-field *ngIf="form.get('role')!.value === 'Team Lead'" appearance="fill">
+        <mat-form-field
+          *ngIf="form.get('role')!.value === 'Team Lead'"
+          appearance="fill"
+        >
           <mat-label>Select Manager</mat-label>
-          <input matInput formControlName="manager" [matAutocomplete]="roleAuto">
+          <input
+            matInput
+            formControlName="manager"
+            [matAutocomplete]="roleAuto"
+          />
           <mat-autocomplete #roleAuto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredManagerOptions | async" [value]="option">
+            <mat-option
+              *ngFor="let option of filteredManagerOptions | async"
+              [value]="option"
+            >
               {{ option }}
             </mat-option>
           </mat-autocomplete>
-          <mat-error *ngIf="form.get('manager')!.hasError('required')">Manager is Required</mat-error>
+          <mat-error *ngIf="form.get('manager')!.hasError('required')"
+            >Manager is Required Manager is Required Manager is
+            Required</mat-error
+          >
         </mat-form-field>
       </div>
     </div>
 
     <div class="form-button">
       <div class="form-button-left">
-        <div class="form-button-inner">
-          <button mat-stroked-button [routerLink]="['../users']">Back</button>
+        <div class="form-button-inner-left">
+          <button
+            mat-stroked-button
+            color="primary"
+            [routerLink]="['../users']"
+          >
+            Back
+          </button>
         </div>
       </div>
       <div class="form-button-right">
-        <div class="form-button-inner">
-          <button mat-stroked-button color="accent" [routerLink]="['../users']">Cancel</button>
-          <button mat-stroked-button color="primary">Submit</button>
+        <div class="form-button-inner-right">
+          <button
+            mat-stroked-button
+            color="primary"
+            [routerLink]="['../users']"
+          >
+            Cancel
+          </button>
+          <button mat-raised-button color="primary">Submit</button>
         </div>
       </div>
-
     </div>
   </form>
 </mat-card>

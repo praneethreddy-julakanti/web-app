@@ -14,11 +14,8 @@ import { DialogService } from 'src/app/services/dialog.service';
 export class AddUserComponent implements OnInit {
 
   departmentOptions: string[] = ['Administration', 'Recruiting', 'Bench Sales', 'Sourcing', 'Accounts'];
-
   roleOptions: string[] = ['Super Admin', 'Admin', 'Manager', 'Team Lead', 'Employee'];
-
   managerOptions: string[] = ['John Smith', 'Sarah Johnson', 'David Anderson'];
-
   teamLeadOptions: string[] = ["Alice", "Bob", "Charlie", "David", "Eva"];
 
   filteredDepartmentOptions: Observable<string[]>;

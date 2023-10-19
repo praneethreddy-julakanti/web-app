@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
 const keyFrames = [
@@ -25,12 +26,18 @@ export class LayoutComponent implements OnInit {
   isSidebarOpen = false;
   isSubMenuOpen: boolean[] = [];
   menuList: any[] = [];
+  isTabletOrLarger: boolean = false;
 
   constructor(
     private http: HttpClient,
     private snackbar: SnackbarService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
+  ) {
+    this.breakpointObserver.observe([Breakpoints.Tablet, Breakpoints.Web]).subscribe(result => {
+      this.isTabletOrLarger = result.matches;
+    });
+  }
 
   ngOnInit(): void {
     this.http.get<any>('assets/side-navbar-items.json').subscribe((data) => {

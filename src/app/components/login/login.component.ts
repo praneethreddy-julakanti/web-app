@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   form = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email, this.emailValidator]],
     password: [
       '',
       [Validators.required, Validators.minLength(8), this.passwordValidator()],
@@ -33,6 +33,16 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {}
+
+  emailValidator(control: AbstractControl) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  
+    if (!emailRegex.test(control.value)) {
+      return { invalidEmail: true };
+    }
+  
+    return null;
+  }
 
   passwordValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -53,7 +63,7 @@ export class LoginComponent implements OnInit {
   userLogin() {
     if (this.form.valid) {
       const hardcodedEmail = 'demo@example.com';
-      const hardcodedPassword = 'Password123!';
+      const hardcodedPassword = 'PassWord123!';
       if (
         this.form.get('email')!.value === hardcodedEmail &&
         this.form.get('password')!.value === hardcodedPassword
@@ -61,7 +71,7 @@ export class LoginComponent implements OnInit {
         this.snackbar.showSnackBar('Login Successful', ['green-snackbar']);
         this.router.navigate(['/usit']);
       } else {
-        this.snackbar.showSnackBar('Login Failed', ['red-snackbar']);
+        this.snackbar.showSnackBar('Invalid Credentials', ['red-snackbar']);
       }
     }
   }
