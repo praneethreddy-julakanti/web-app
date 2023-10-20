@@ -17,7 +17,7 @@
     height="100"
     loading="lazy"
   />
-  <span class="button-devider"></span>
+  <span class="button-divider"></span>
   <button
     mat-icon-button
     class="profile-icon"
@@ -54,16 +54,17 @@
           class="custom-list-item"
           [routerLink]="menuItem.routerLink"
           routerLinkActive="active"
-          (click)="toggleSubMenu(i)"
         >
-          <mat-icon class="custom-icon">{{ menuItem.icon }}</mat-icon>
-         <span> {{ menuItem.text }}</span>
-          <mat-icon
-            class="custom-icon"
-            *ngIf="menuItem.children && menuItem.children.length > 0"
-          >
-            {{ isSubMenuOpen[i] ? "expand_less" : "expand_more" }}
-          </mat-icon>
+          <div class="menu-item" (click)="toggleSubMenu(i)">
+            <mat-icon class="custom-icon">{{ menuItem.icon }}</mat-icon>
+            <span> {{ menuItem.text }}</span>
+            <mat-icon
+              class="custom-arrow-icon"
+              *ngIf="menuItem.children && menuItem.children.length > 0"
+            >
+              {{ isSubMenuOpen[i] ? "expand_less" : "expand_more" }}
+            </mat-icon>
+          </div>
         </mat-list-item>
         <div
           *ngIf="
@@ -87,83 +88,7 @@
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- <mat-toolbar color="primary" class="tool-bar-container">
-  <button
-    mat-icon-button
-    matTooltipClass="custom-tooltip"
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-    (click)="toggleSidenav()"
-  >
-    <mat-icon [@rotate]="isSidebarOpen ? 'close' : 'menu'">
-      {{ isSidebarOpen ? "close" : "menu" }}
-    </mat-icon>
-  </button>
-  <div class="logo">
-    <img src="assets/images/narvee-logo.png" alt="logo" width="100" height="100" loading="lazy" />
-  </div>
-  <span class="spacer"></span>
-  <button mat-icon-button class="profile-icon" aria-label="profile-icon" [matMenuTriggerFor]="menu">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      My Profile
-      <mat-icon class="icon">person</mat-icon>
-    </button>
-    <button mat-menu-item>
-      <mat-icon class="icon">settings</mat-icon>
-      Account Settings
-    </button>
-    <button mat-menu-item>
-      <mat-icon class="icon">help</mat-icon>
-      Need Help?
-    </button>
-    <button mat-menu-item (click)="onSignOut()">
-      Sign Out
-      <mat-icon class="icon">logout</mat-icon>
-    </button>
-  </mat-menu>
-</mat-toolbar>
-
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" #sidenav [opened]="isSidebarOpen">
-    <mat-nav-list class="custom-sidebar-list">
-      <ng-container *ngFor="let menuItem of menuList; let i = index">
-        <mat-list-item class="custom-list-item" [routerLink]="menuItem.routerLink" routerLinkActive="active" (click)="toggleSubMenu(i)">
-          <mat-icon class="custom-icon">{{ menuItem.icon }}</mat-icon>
-          <span *ngIf="isTabletOrLarger; else showOnHover">{{ menuItem.text }}</span>
-          <ng-template #showOnHover>
-            <span [matTooltip]="menuItem.text">{{ menuItem.text }}</span>
-          </ng-template>
-          <mat-icon class="custom-icon" *ngIf="menuItem.children && menuItem.children.length > 0">
-            {{ isSubMenuOpen[i] ? "expand_less" : "expand_more" }}
-          </mat-icon>
-        </mat-list-item>
-        <div *ngIf="isSubMenuOpen[i] && menuItem.children && menuItem.children.length > 0">
-          <mat-nav-list class="custom-sidebar-list custom-submenu">
-            <ng-container *ngFor="let subItem of menuItem.children">
-              <mat-list-item class="custom-list-item" [routerLink]="subItem.routerLink">
-                <mat-icon class="custom-icon">{{ subItem.icon }}</mat-icon>
-                <span *ngIf="isTabletOrLarger; else showSubOnHover">{{ subItem.text }}</span>
-                <ng-template #showSubOnHover>
-                  <span [matTooltip]="subItem.text">{{ subItem.text }}</span>
-                </ng-template>
-              </mat-list-item>
-            </ng-container>
-          </mat-nav-list>
-        </div>
-      </ng-container>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
