@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
 
   emailValidator(control: AbstractControl) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const email = control.value.toLowerCase();
   
-    if (!emailRegex.test(control.value)) {
+    if (!emailRegex.test(email)) {
       return { invalidEmail: true };
     }
   
@@ -62,10 +63,11 @@ export class LoginComponent implements OnInit {
 
   userLogin() {
     if (this.form.valid) {
-      const hardcodedEmail = 'demo@example.com';
+      const hardcodedEmail = 'demo@example.com'.toLowerCase();;
+      const enteredEmail = this.form.get('email')?.value?.toLowerCase();
       const hardcodedPassword = 'PassWord123!';
       if (
-        this.form.get('email')!.value === hardcodedEmail &&
+        hardcodedEmail ===  enteredEmail &&
         this.form.get('password')!.value === hardcodedPassword
       ) {
         this.snackbar.showSnackBar('Login Successful', ['green-snackbar']);

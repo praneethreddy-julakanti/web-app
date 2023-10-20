@@ -24,18 +24,6 @@
                         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
                     <mat-error *ngIf="form.get('password')!.touched || form.get('password')!.hasError('required') || form.get('password')!.value === '' || form.get('password')!.errors">Password is required</mat-error>
-                    <!-- <mat-error *ngIf="  form.get('password')!.errors">
-                        Invalid Password
-                    </mat-error> -->
-                    
-                    <!-- <mat-error
-                        *ngIf="form.get('password')!.touched && form.get('password')!.hasError('minlength') && form.get('password')!.value != ''">
-                        Password must be at least 8 characters long
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.get('password')!.touched && form.get('password')!.hasError('pattern') && form.get('password')!.value != ''">
-                        Password must contain at least one uppercase letter, one number, and one special character
-                    </mat-error> -->
                 </mat-form-field>
 
                 <div class="forgot-password">
